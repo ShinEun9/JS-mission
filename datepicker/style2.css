@@ -1,0 +1,136 @@
+.a11y-hidden {
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+}
+
+:root {
+  --green-color: #5cd17b;
+  box-sizing: border-box;
+}
+
+.calendar {
+  display: none;
+  position: absolute;
+  top: 55px;
+  width: 500px;
+  background-color: white;
+  z-index: 100;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  display: none;
+}
+
+.calendar.active,
+.calendar.active + .backdrop {
+  display: block;
+}
+
+.calendar-open-btn {
+  padding: 10px 20px;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.calendar-nav {
+  background-color: var(--green-color);
+  color: white;
+  width: 500px;
+  height: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+time {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  font-size: 20px;
+}
+
+.prev-month,
+.next-month {
+  padding: 0;
+  text-align: center;
+  background: none;
+  border: 0;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  padding: 30px;
+  cursor: pointer;
+}
+
+.prev-month div {
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 10px solid transparent;
+  border-right: 10px solid white;
+}
+
+.next-month div {
+  margin: auto;
+  width: 0;
+  height: 0;
+  border-bottom: 10px solid transparent;
+  border-top: 10px solid transparent;
+  border-left: 10px solid white;
+  border-right: 10px solid transparent;
+}
+
+.calendar-grid {
+  width: 500px;
+  height: 500px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.calendar-grid div {
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.calendar-grid div.transparent {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.calendar-grid div:not(.transparent):hover {
+  color: white;
+  background-color: var(--green-color);
+  cursor: pointer;
+}
+
+.calendar-grid div.sunday {
+  color: red;
+}
+
+.calendar-grid div.select-day {
+  color: white;
+  background-color: var(--green-color);
+}
+
+.calendar-grid div.today {
+  border: 1px solid var(--green-color);
+}
