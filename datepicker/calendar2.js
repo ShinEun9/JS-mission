@@ -33,43 +33,50 @@ function makingCalendar(newYear, newMonth) {
   let newMonthDate = 1;
 
   for (let i = 0; i < 42; i++) {
-    days[i].classList.remove("transparent");
+    days[i].classList.remove("prev-month-transparent");
+    days[i].classList.remove("next-month-transparent");
     days[i].classList.remove("sunday");
     days[i].classList.remove("select-day");
     days[i].classList.remove("today");
+    days[i].classList.remove("not-hover");
 
     if (i < day) {
       days[i].textContent = lastMonthDate++;
-      days[i].classList.add("transparent");
+      days[i].classList.add("prev-month-transparent");
+    } else if (i < day + timeLength) {
+      days[i].textContent = date++;
+      if (i % 7 === 0) {
+        days[i].classList.add("sunday");
+      }
+
+      // 선택한 날짜 표시
+      if (selectYear === year && selectMonth === month + 1) {
+        if (i === selectDate + (day - 1)) {
+          days[i].classList.add("select-day");
+        }
+      }
+
+      // 오늘 날짜 표시
+      if (todayYear === year && todayMonth === month + 1) {
+        if (i === todayDate + day - 1) {
+          days[i].classList.add("today");
+        }
+      }
     } else {
-      if (i < day + timeLength) {
-        days[i].textContent = date++;
-        if (i % 7 === 0) {
-          days[i].classList.add("sunday");
-        }
-
-        // 선택한 날짜 표시
-        if (selectYear === year && selectMonth === month + 1) {
-          if (i === selectDate + (day - 1)) {
-            days[i].classList.add("select-day");
-          }
-        }
-
-        // 오늘 날짜 표시
-        if (todayYear === year && todayMonth === month + 1) {
-          if (i === todayDate + day - 1) {
-            days[i].classList.add("today");
-          }
-        }
+      if (day + timeLength < 35 && i >= 35) {
+        days[i].innerHTML = "&nbsp;";
+        days[i].classList.add("not-hover");
       } else {
         days[i].textContent = newMonthDate++;
-        days[i].classList.add("transparent");
+        days[i].classList.add("next-month-transparent");
       }
     }
   }
 }
 
 calendar.addEventListener("click", (event) => {
+  openBtn.classList.remove("focus");
+
   if (event.target.classList.contains("day")) {
     const captionMonthText = captionMonth.textContent;
     const value = event.target.textContent;
@@ -77,6 +84,12 @@ calendar.addEventListener("click", (event) => {
     selectYear = parseInt(captionYear.textContent);
     selectMonth = monthNames.findIndex((item) => item === captionMonthText) + 1;
     selectDate = parseInt(value);
+
+    if (event.target.classList.contains("prev-month-transparent")) {
+      selectMonth = selectMonth - 1;
+    } else if (event.target.classList.contains("next-month-transparent")) {
+      selectMonth = selectMonth + 1;
+    }
 
     openBtn.value = openBtn.textContent = `${selectYear}-${
       selectMonth < 10 ? `0${selectMonth}` : selectMonth
@@ -90,7 +103,7 @@ calendar.addEventListener("click", (event) => {
 
 monthBtns.forEach((item) =>
   item.addEventListener("click", (event) => {
-    if (event.currentTarget.classList.contains("prev")) {
+    if (event.currentTarget.classList.contains("prev-month")) {
       makingCalendar(calendarYear, --calendarMonth);
     } else {
       makingCalendar(calendarYear, ++calendarMonth);
@@ -99,6 +112,7 @@ monthBtns.forEach((item) =>
 );
 
 function calendarOpen() {
+  openBtn.classList.add("focus");
   calendar.classList.add("active");
 
   if (!openBtn.value) {
@@ -115,5 +129,6 @@ function calendarOpen() {
 openBtn.addEventListener("click", calendarOpen);
 
 document.querySelector(".backdrop").addEventListener("click", () => {
+  openBtn.classList.remove("focus");
   calendar.classList.remove("active");
 });

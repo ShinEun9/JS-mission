@@ -14,6 +14,10 @@
   box-sizing: border-box;
 }
 
+button {
+  border: 0;
+}
+
 .calendar {
   display: none;
   position: absolute;
@@ -40,10 +44,14 @@
 .calendar-open-btn {
   padding: 10px 20px;
   background-color: white;
-  border: 1px solid black;
+  outline: 1.5px solid #c4c4c4;
   border-radius: 5px;
   margin-bottom: 10px;
   cursor: pointer;
+}
+
+.calendar-open-btn:focus {
+  outline: 2px solid #4285f4;
 }
 
 .calendar-nav {
@@ -112,11 +120,11 @@ time {
   align-items: center;
 }
 
-.calendar-grid div.transparent {
+.calendar-grid div[class$="transparent"] {
   color: rgba(0, 0, 0, 0.2);
 }
 
-.calendar-grid div:not(.transparent):hover {
+.calendar-grid .day:not(.not-hover):hover {
   color: white;
   background-color: var(--green-color);
   cursor: pointer;
