@@ -10,6 +10,7 @@
 }
 
 :root {
+  --calendar-size: 500px;
   --green-color: #5cd17b;
   box-sizing: border-box;
 }
@@ -22,9 +23,11 @@ button {
   display: none;
   position: absolute;
   top: 55px;
-  width: 500px;
+  width: var(--calendar-size);
+  min-width: 170px;
   background-color: white;
   z-index: 100;
+  font-size: calc(var(--calendar-size) * 0.03);
 }
 
 .backdrop {
@@ -57,8 +60,10 @@ button {
 .calendar-nav {
   background-color: var(--green-color);
   color: white;
-  width: 500px;
-  height: 100px;
+  width: var(--calendar-size);
+  height: calc(var(--calendar-size) * 0.2);
+  min-width: 170px;
+  min-height: 34px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -69,19 +74,16 @@ time {
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  font-size: 20px;
+  font-size: 1.5em;
 }
 
 .prev-month,
 .next-month {
-  padding: 0;
+  padding: calc(var(--calendar-size) * 0.01);
   text-align: center;
   background: none;
   border: 0;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
-  padding: 30px;
   cursor: pointer;
 }
 
@@ -89,28 +91,31 @@ time {
   margin: auto;
   width: 0;
   height: 0;
-  border-bottom: 10px solid transparent;
-  border-top: 10px solid transparent;
-  border-left: 10px solid transparent;
-  border-right: 10px solid white;
+  border-bottom: calc(var(--calendar-size) * 0.02) solid transparent;
+  border-top: calc(var(--calendar-size) * 0.02) solid transparent;
+  border-left: calc(var(--calendar-size) * 0.02) solid transparent;
+  border-right: calc(var(--calendar-size) * 0.02) solid white;
 }
 
 .next-month div {
   margin: auto;
   width: 0;
   height: 0;
-  border-bottom: 10px solid transparent;
-  border-top: 10px solid transparent;
-  border-left: 10px solid white;
-  border-right: 10px solid transparent;
+  border-bottom: calc(var(--calendar-size) * 0.02) solid transparent;
+  border-top: calc(var(--calendar-size) * 0.02) solid transparent;
+  border-left: calc(var(--calendar-size) * 0.02) solid white;
+  border-right: calc(var(--calendar-size) * 0.02) solid transparent;
 }
 
 .calendar-grid {
-  width: 500px;
-  height: 500px;
+  width: var(--calendar-size);
+  height: var(--calendar-size);
+  min-width: 170px;
+  min-height: 170px;
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
+  font-size: 1em;
 }
 
 .calendar-grid div {

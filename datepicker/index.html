@@ -6,88 +6,85 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>나의 멋진 달력</title>
-    <link rel="stylesheet" href="./stlye.css">
+    <link rel="stylesheet" href="./style.css">
 </head>
 
 <body>
-    <article id="calendar">
-        <h2>나의 멋진 HTML 달력</h2>
-        <table>
-            <caption>
-                <time datetime="">
-                    <span class="year"></span>년
-                    <span class="month"></span>월
-                </time>
-            </caption>
-            <tr>
-                <th scope="col">일</th>
-                <th scope="col">월</th>
-                <th scope="col">화</th>
-                <th scope="col">수</th>
-                <th scope="col">목</th>
-                <th scope="col">금</th>
-                <th scope="col">토</th>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </table>
-        <button type="button" class="prev">이전달</button>
-        <button type="button" class="next">다음달</button>
-    </article>
+    <button class="calendar-open-btn" value="">
+        Select date
+    </button>
 
-    <script src="./calendar.js"></script>
+    <article class="calendar">
+        <div class="calendar-nav">
+            <button class="prev-month">
+                <div></div>
+                <span class="a11y-hidden">이전달</span>
+            </button>
+            <time datetime="">
+                <span class="month"></span>
+                <span class="year"></span>
+            </time>
+            <button class="next-month">
+                <div></div>
+                <span class="a11y-hidden">이전달</span>
+            </button>
+
+        </div>
+        <div class="calendar-grid">
+            <div>SUN</div>
+            <div>MON</div>
+            <div>TUE</div>
+            <div>WED</div>
+            <div>THU</div>
+            <div>FRI</div>
+            <div>SAT</div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+            <div class="day"></div>
+        </div>
+    </article>
+    <div class="backdrop"></div>
+
+    <script type="module" src="./calendar.js"></script>
 </body>
 
 </html>
