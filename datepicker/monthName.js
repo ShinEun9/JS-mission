@@ -1,4 +1,5 @@
 const monthNames = [
+  "",
   "January",
   "February",
   "March",
