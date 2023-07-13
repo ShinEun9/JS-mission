@@ -1,4 +1,5 @@
 import monthNames from "./monthName.js";
+import "./style.css";
 
 const days = document.querySelectorAll(".day");
 const calendar = document.querySelector(".calendar");
